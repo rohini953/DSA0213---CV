@@ -1,0 +1,16 @@
+import cv2
+from google.colab.patches import cv2_imshow
+cap = cv2.VideoCapture("sample-5s.mp4")   # use your video file name
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+    cv2_imshow(frame)
+    # change delay here
+    key = cv2.waitKey(30)   # normal speed
+    # key = cv2.waitKey(100)  # slow motion
+    # key = cv2.waitKey(5)    # fast motion
+    if key == 27:   # press ESC to exit
+        break
+cap.release()
+cv2.destroyAllWindows()

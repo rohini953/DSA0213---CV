@@ -1,0 +1,17 @@
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+img = cv2.imread("micky.png")   # use your file name
+# Check if image was loaded successfully
+if img is None:
+    print("Error: Image not loaded. Please check the file name and path.")
+else:
+    kernel = np.ones((5,5), np.uint8)
+    erode = cv2.erode(img, kernel, iterations=1)
+    plt.subplot(1,2,1)
+    plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    plt.title("Original"); plt.axis("off")
+    plt.subplot(1,2,2)
+    plt.imshow(cv2.cvtColor(erode, cv2.COLOR_BGR2RGB))
+    plt.title("Eroded"); plt.axis("off")
+    plt.show()

@@ -1,0 +1,12 @@
+import cv2
+import matplotlib.pyplot as plt
+img = cv2.imread("penguin.png")   # use your file name
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
+plt.subplot(1,2,1)
+plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+plt.title("Original"); plt.axis("off")
+plt.subplot(1,2,2)
+plt.imshow(sobelx, cmap='gray')
+plt.title("Sobel X"); plt.axis("off")
+plt.show()
